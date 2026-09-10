@@ -1,3 +1,4 @@
+import math
 from main import A, B, C
 
 
@@ -11,3 +12,9 @@ def test_subtraction():
 
 def test_multiplication():
     assert C(5, 3) == 15
+
+
+def test_math_square_root_of_addition():
+    result = A(9, 7)
+    assert math.isclose(math.sqrt(result), 4, rel_tol=1e-9)
+    # math.sqrt(16) = 4.0
