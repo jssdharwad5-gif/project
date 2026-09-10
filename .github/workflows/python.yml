@@ -40,4 +40,4 @@ jobs:
       - name: Deploy to production
         run: |
           echo "Continuous deployment step: publish your project here"
-          echo "Example: copy files to server or run your deploy command"
+            python main.py
