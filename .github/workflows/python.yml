@@ -1,10 +1,10 @@
-name: Python CI
+name: Python CI/CD
 
 on:
   push:
-    branches: [main, master]
+    branches: [main]
   pull_request:
-    branches: [main, master]
+    branches: [main]
 
 jobs:
   test:
@@ -27,3 +27,17 @@ jobs:
       - name: Run pytest
         run: |
           python -m pytest -q
+
+  deploy:
+    needs: test
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy to production
+        run: |
+          echo "Continuous deployment step: publish your project here"
+          echo "Example: copy files to server or run your deploy command"
