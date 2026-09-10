@@ -1,5 +1,6 @@
 import math
-from main import A, B, C
+import sys
+from main import A, B, C, read_two_numbers
 
 
 def test_addition():
@@ -17,4 +18,12 @@ def test_multiplication():
 def test_math_square_root_of_addition():
     result = A(9, 7)
     assert math.isclose(math.sqrt(result), 4, rel_tol=1e-9)
-    # math.sqrt(16) = 4.0
+
+
+def test_read_two_numbers_from_command_line():
+    original_argv = sys.argv[:]
+    try:
+        sys.argv = ['main.py', '7', '4']
+        assert read_two_numbers() == (7.0, 4.0)
+    finally:
+        sys.argv = original_argv
